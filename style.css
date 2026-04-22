@@ -1,32 +1,60 @@
-/* General reset and font setup */
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: #1a1a1a;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
+    font-family: 'Courier New', Courier, monospace;
 }
 
-/* Card container */
-.container {
-    background: white;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 400px;
-    border-top: 5px solid #2ea44f; /* GitHub's green accent */
+/* The "Metal" Edges */
+.console-frame {
+    background: linear-gradient(145deg, #bdc3c7, #2c3e50);
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 
+        0 10px 30px rgba(0,0,0,0.5),
+        inset 2px 2px 5px rgba(255,255,255,0.2);
+    border: 4px solid #7f8c8d;
 }
 
-h1 {
-    color: #24292e;
-    margin-bottom: 10px;
+/* The Black Screen */
+.screen {
+    background-color: #000;
+    color: #00ff00; /* Classic Terminal Green */
+    width: 600px;
+    height: 350px;
+    padding: 20px;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: inset 0 0 20px rgba(0, 255, 0, 0.1);
+    border: 2px solid #333;
+    position: relative;
 }
 
-p {
-    line-height: 1.6;
-    color: #586069;
+/* Retro Scanline Effect */
+.screen::after {
+    content: " ";
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 3px 100%;
+    pointer-events: none;
+}
+
+/* Animations */
+.online {
+    color: #55ff55;
+    font-weight: bold;
+    text-shadow: 0 0 5px #00ff00;
+}
+
+.blink {
+    animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+    50% { opacity: 0; }
 }
